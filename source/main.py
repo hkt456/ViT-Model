@@ -39,6 +39,14 @@ def data_loaders():
     print(class_names)
 
 
+def get_summary_transformer_encoder():
+    transformer_encoder = TransformerEncoderBlock()
+    summary(transformer_encoder,
+        input_size=(1, 768, 768),
+        col_names=["input_size", "output_size", "num_params", "trainable"],
+        col_width=20,
+        row_settings=["var_names"])
+
 
 # # Get a summary of the input and outputs of PatchEmbedding (uncomment for full output)
 def get_summary_patchEmbedding():
@@ -51,6 +59,7 @@ def get_summary_patchEmbedding():
 
 
 def __main__():
+    
     data_loaders()
     get_summary_patchEmbedding() 
 
