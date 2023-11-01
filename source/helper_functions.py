@@ -176,7 +176,7 @@ def pred_and_plot_image(
     image_path: str,
     class_names: List[str] = None,
     transform=None,
-    device: torch.device = "cuda" if torch.cuda.is_available() else "cpu",
+    device: torch.device = "mps",
 ):
     """Makes a prediction on a target image with a trained model and plots the image.
 
@@ -246,7 +246,7 @@ def set_seeds(seed: int=42):
     # Set the seed for general torch operations
     torch.manual_seed(seed)
     # Set the seed for CUDA torch operations (ones that happen on the GPU)
-    torch.cuda.manual_seed(seed)
+    torch.mps.manual_seed(seed)
 
 def download_data(source: str, 
                   destination: str,
