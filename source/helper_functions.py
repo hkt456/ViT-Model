@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from torch import nn
+from torchinfo import summary
 
 import os
 import zipfile

@@ -1,7 +1,7 @@
 from data_setup import *
 from engine import *
 from helper_functions import *
-
+from path_embedding import *
 
 
 import torch
@@ -35,4 +35,16 @@ print(train_dataloader)
 print(test_dataloader)
 print(class_names)
 
+patchify = PatchEmbedding(in_channels=3,
+                          patch_size=16,
+                          embedding_dim=768)
 
+random_input_image = (1, 3, 224, 224)
+random_input_image_error = (1, 3, 250, 250) # will error because image size is incompatible with patch_size
+
+# # Get a summary of the input and outputs of PatchEmbedding (uncomment for full output)
+summary(PatchEmbedding(),
+    input_size=random_input_image, # try swapping this for "random_input_image_error"
+    col_names=["input_size", "output_size", "num_params", "trainable"],
+    col_width=20,
+    row_settings=["var_names"])
