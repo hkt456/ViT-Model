@@ -2,7 +2,7 @@ from data_setup import *
 from engine import *
 from helper_functions import *
 from path_embedding import *
-
+from msa import *
 
 import torch
 from torch import nn
@@ -19,6 +19,7 @@ IMG_SIZE = 224
 BATCH_SIZE = 32
 NUM_WORKERS = 0
 PATCH_SIZE = 16
+
 
 # Create data loaders
 def data_loaders():
