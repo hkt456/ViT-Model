@@ -1,5 +1,5 @@
 import torch
-import torch.nn
+from torch import nn
 
 class MultiheadSelfAttentionBlock(nn.Module):
 
@@ -19,7 +19,7 @@ class MultiheadSelfAttentionBlock(nn.Module):
     def forward(self, x):
         x = self.layer_norm(x)
 
-        attn_output = self.multihead_attn(query=x,
+        attn_output, _ = self.multihead_attn(query=x,
                                           key=x,
                                           value=x,
                                           need_weights=False)

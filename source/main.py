@@ -3,6 +3,8 @@ from engine import *
 from helper_functions import *
 from path_embedding import *
 from msa import *
+from transformer_encoder import *
+
 
 import torch
 from torch import nn
@@ -41,7 +43,7 @@ def data_loaders():
 
 def get_summary_transformer_encoder():
     transformer_encoder = TransformerEncoderBlock()
-    summary(transformer_encoder,
+    summary(model = transformer_encoder,
         input_size=(1, 768, 768),
         col_names=["input_size", "output_size", "num_params", "trainable"],
         col_width=20,
@@ -62,6 +64,7 @@ def __main__():
     
     data_loaders()
     get_summary_patchEmbedding() 
+    get_summary_transformer_encoder()
 
 
 
