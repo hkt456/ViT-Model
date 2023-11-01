@@ -1,9 +1,12 @@
-import data_setup
-import engine
+from data_setup import *
+from engine import *
 from helper_functions import *
+
+
 
 import torch
 from torch import nn
+from torchvision import transforms
 
 # Download pizza, steak, sushi images from GitHub
 image_path = download_data(source="https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip",
