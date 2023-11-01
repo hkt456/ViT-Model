@@ -40,10 +40,10 @@ class ViT(nn.Module):
         self.transformer_encoder = nn.Sequential(*[TransformerEncoderBlock(embedding_dim=embedding_dim,
                                                                         num_heads=num_heads,
                                                                         mlp_size=mlp_size,
-                                                                        mlp_dropout=mlp_dropout]) for _ in range(num_transformer_blocks)])
+                                                                        mlp_dropout=mlp_dropout) for _ in range(num_transformer_blocks)])
 
         self.classifier = nn.Sequential(
-            nn.LayerNorm(embedding_dim),
+            nn.LayerNorm(normalized_shape=embedding_dim),
             nn.Linear(in_features=embedding_dim,
                       out_features=num_classes)
         )
@@ -58,7 +58,7 @@ class ViT(nn.Module):
 
         x = torch.cat((class_token, x), dim=1)
 
-        x += self.position_embedding
+        x = self.position_embedding + x
 
         x = self.embedding_dropout(x)
 

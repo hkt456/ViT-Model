@@ -1,10 +1,10 @@
 from data_setup import *
 from engine import *
 from helper_functions import *
-from path_embedding import *
+from patch_embedding import *
 from msa import *
 from transformer_encoder import *
-
+from ViT import *
 
 import torch
 from torch import nn
@@ -52,7 +52,7 @@ def get_summary_transformer_encoder():
 
 # # Get a summary of the input and outputs of PatchEmbedding (uncomment for full output)
 def get_summary_patchEmbedding():
-    random_input_image = (1, 3, 224, 224)
+    random_input_image = (32, 3, 224, 224)
     summary(PatchEmbedding(),
         input_size=random_input_image, # try swapping this for "random_input_image_error"
         col_names=["input_size", "output_size", "num_params", "trainable"],
@@ -60,11 +60,29 @@ def get_summary_patchEmbedding():
         row_settings=["var_names"])
 
 
+def get_summary_vit():
+    random_input_image = (32, 3, 224, 224)
+    summary(ViT(),
+        input_size=random_input_image, # try swapping this for "random_input_image_error"
+        col_names=["input_size", "output_size", "num_params", "trainable"],
+        col_width=20,
+        row_settings=["var_names"])
+
+def test_ViT():
+    set_seeds()
+    random_image_tensor = torch.randn(1, 3, 224, 224)
+    model = ViT(num_classes = 3)
+    output = model(random_image_tensor)
+    print(output)
+    print(output.shape)
+
 def __main__():
     
     data_loaders()
     get_summary_patchEmbedding() 
     get_summary_transformer_encoder()
+    get_summary_vit()
+    test_ViT()
 
 
 
