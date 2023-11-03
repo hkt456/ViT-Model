@@ -132,3 +132,7 @@ There are also functions for illustrating accuravy, loss,... a lot of things. Fe
     > Default value is set to 0.1 like in the paper to randomly drop embeddings
 11. `num_classes`: int = 1000
     > Default value is set to 1000, defining the number of classes to classify
+
+# License
+
+This project is licensed under the [MIT License](LICENSE).
