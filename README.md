@@ -95,3 +95,40 @@ train()
 ```
 
 There are also functions for illustrating accuravy, loss,... a lot of things. Feel free to check out `helper_functions.py`
+
+# Parameters
+
+1. `img_size`: int = 224
+   <br>
+   > Default value is set to 224, defining the dimensions of a 224x224 image to be processed
+2. `in_channels`: int = 3
+   <br>
+   > Default value is set to 3, defining the number of channels of the input to be passed into
+   > the `patch_embedding` layer (The patcher - Conv2D layer)
+3. `patch_size`: int = 16
+   <br>
+   > Default value is set to 16, defining the size of the patch to be
+   > later turned into embedding through the `patch_embedding` layer
+4. `number_transformer_blocks`: int = 12
+   <br>
+   > Default value is set to 12 to replicate the number of transformer blocks
+   > reported to be used in the architecture in the research paper
+5. `embedding_dim`: int = 768
+   <br>
+   > Default value is set to 768, defining the dimension of the embedding matrix used throughout different layers
+6. `mlp_size`: int = 3072
+   <br>
+   > Default value is set to 3072, defining the `out_features` for the `nn.Linear` layers inside the MLP layer
+7. `num_heads`: int = 12
+   <br>
+   > Default value is set to 12, defining the number of `MultiheadAttention` blocks for each `MSA` layer
+8. `attn_dropout`: float = 0
+   <br>
+   > Default value is set to 0 like in the paper, defining the `dropout` parameter for `MultiheadAttention`
+9. `mlp_dropout`: float = 0.1
+   <br>
+   > Default value is set to 0.1 like in the paper, defining the `dropout` parameter for `MLPBlock`
+10. `embedding_dropout`: float = 0.1
+    > Default value is set to 0.1 like in the paper to randomly drop embeddings
+11. `num_classes`: int = 1000
+    > Default value is set to 1000, defining the number of classes to classify
