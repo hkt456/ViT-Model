@@ -22,6 +22,7 @@ BATCH_SIZE = 32
 NUM_WORKERS = 0
 PATCH_SIZE = 16
 
+length = 0
 
 # Create data loaders
 def data_loaders():
@@ -39,6 +40,7 @@ def data_loaders():
     print(train_dataloader)
     print(test_dataloader)
     print(class_names)
+    length = len(class_names)
 
 
 def get_summary_transformer_encoder():
@@ -58,7 +60,7 @@ def get_summary_patchEmbedding():
         col_names=["input_size", "output_size", "num_params", "trainable"],
         col_width=20,
         row_settings=["var_names"])
-
+ 
 
 def get_summary_vit():
     random_input_image = (32, 3, 224, 224)
@@ -71,7 +73,7 @@ def get_summary_vit():
 def test_ViT():
     set_seeds()
     random_image_tensor = torch.randn(1, 3, 224, 224)
-    model = ViT(num_classes = 3)
+    model = ViT(num_classes = length)
     output = model(random_image_tensor)
     print(output)
     print(output.shape)
